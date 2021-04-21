@@ -5,6 +5,15 @@ var fs = require('fs');
 var app = express();
 var multer = require('multer')
 
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "content-type,Access-Token");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1')
+    res.header("Content-Type", "application/json;charset=utf-8");
+    next();
+});
+
 /* 挂载静态资源
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -68,12 +77,11 @@ app.get('/h', (req, res) => {
 
 
 
-
-
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
 });
+
 
 // error handler
 app.use(function (err, req, res, next) {
