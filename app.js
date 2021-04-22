@@ -35,6 +35,7 @@ app.post('/upload', multer({
     dest: __dirname
 }).any(), (req, res) => {
     // console.log('req:',req)
+    console.log('body:',req.body)
     console.log('file:',req.file)
     console.log('files:',req.files)
     // console.log(res)
