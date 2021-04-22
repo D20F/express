@@ -34,7 +34,8 @@ app.use('/', express.static(path.join(__dirname, 'dist')));
 app.post('/upload', multer({
     dest: __dirname
 }).any(), (req, res) => {
-    console.log(req.files)
+    console.log('req:',req)
+    console.log('reqfiles:',req.files)
     // console.log(res)
     // 循环解决多个文件
     for (const file of req.files) {
