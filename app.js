@@ -38,6 +38,9 @@ app.post('/upload', multer({
     console.log('files:',req.files)
     console.log('files:',req.body)
     console.log('files:',req.body.file)
+    console.log('files:',JSON.stringify(req.body.file))
+    console.log('files:',req.body.file[0])
+    console.log('files:',req.body.file[1])
     // console.log(res)
     // 循环解决多个文件
     for (const file of req.files) {
