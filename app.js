@@ -5,11 +5,11 @@ var fs = require('fs');
 var app = express();
 var multer = require('multer')
 
-app.all('*', function(req, res, next) {
+app.all('*', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "content-type,Access-Token");
-    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By",' 3.2.1')
+    res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By", ' 3.2.1')
     res.header("Content-Type", "application/json;charset=utf-8");
     next();
 });
@@ -35,9 +35,9 @@ app.post('/upload', multer({
     dest: __dirname
 }).any(), (req, res) => {
     // console.log('req:',req)
-    console.log('body:',req.body)
-    console.log('file:',req.file)
-    console.log('files:',req.files)
+    console.log('body:', req.body)
+    console.log('file:', req.file)
+    console.log('files:', req.files)
     // console.log(res)
     // 循环解决多个文件
     for (const file of req.files) {
@@ -51,13 +51,13 @@ app.post('/upload', multer({
         const extname = file.filename + path.extname(file.originalname)
         const filepath = file.path;
         const filename = file.destination + "/" + extname
-        
+
         // console.log('extname: ' + extname);
         // console.log('filepath: ' + filepath);
         // console.log('filename: ' + filename);
 
         fs.renameSync(filepath, filename, err => {
-            if (err) {console.error(err)}
+            if (err) { console.error(err) }
         })
 
         /* 读写文件存储
@@ -76,7 +76,8 @@ app.post('/upload', multer({
 });
 app.get('/h', (req, res) => {
 
-    res.send('Hello World!')
+    console.log(req.query.data)
+    res.send(req.query.data)
 
 });
 
