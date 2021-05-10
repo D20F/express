@@ -77,6 +77,7 @@ app.post('/upload', multer({
 app.get('/h', (req, res) => {
 
     console.log(req.query.data)
+    console.log(new Date)
     res.send(req.query.data)
 
 });
