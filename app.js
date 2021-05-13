@@ -10,7 +10,7 @@ app.all('*', function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "content-type,Access-Token");
     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
     res.header("X-Powered-By", ' 3.2.1')
-    res.header("Content-Type", "application/json;charset=utf-8");
+    // res.header("Content-Type", "application/json;charset=utf-8");
     next();
 });
 
@@ -27,8 +27,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', express.static(path.join(__dirname, 'dist')));
 */
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 
 app.post('/upload', multer({
